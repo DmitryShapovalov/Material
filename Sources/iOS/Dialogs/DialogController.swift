@@ -115,7 +115,7 @@ open class DialogController<T: DialogView>: UIViewController {
   
   /// Handler for when one of 3 dialog buttons is tapped.
   @objc
-  private func didTapButton(_ sender: Button) {
+  private func handleDidTapButton(_ sender: Button) {
     switch sender {
     case dialogView.positiveButton:
       didTapPositiveButtonHandler?()
@@ -147,7 +147,7 @@ private extension DialogController {
   func prepareDialogView() {
     view.layout(dialogView).center()
     dialogView.buttonArea.subviews.forEach {
-      ($0 as? Button)?.addTarget(self, action: #selector(didTapButton), for: .touchUpInside)
+      ($0 as? Button)?.addTarget(self, action: #selector(handleDidTapButton), for: .touchUpInside)
     }
   }
 }

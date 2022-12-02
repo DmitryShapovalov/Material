@@ -53,7 +53,7 @@ open class CheckButtonGroup: BaseButtonGroup<CheckButton> {
     return selecetedButtons.map { buttons.firstIndex(of: $0)! }
   }
   
-  open override func didTap(button: CheckButton, at index: Int) {
+  open override func handleDidTap(button: CheckButton, at index: Int) {
     button.setSelected(!button.isSelected, animated: true)
   }
 }

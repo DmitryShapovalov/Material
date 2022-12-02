@@ -32,7 +32,7 @@ open class BaseButtonGroup<T: Button>: View {
     didSet {
       oldValue.forEach {
         $0.removeFromSuperview()
-        $0.removeTarget(self, action: #selector(didTap(_:)), for: .touchUpInside)
+        $0.removeTarget(self, action: #selector(handleDidTap(_:)), for: .touchUpInside)
       }
       prepareButtons()
       grid.views = buttons
@@ -75,15 +75,15 @@ open class BaseButtonGroup<T: Button>: View {
     grid.reload()
   }
   
-  open func didTap(button: T, at index: Int) { }
+  open func handleDidTap(button: T, at index: Int) { }
   
   @objc
-  private func didTap(_ sender: Button) {
+  private func handleDidTap(_ sender: Button) {
     guard let sender = sender as? T,
       let index = buttons.firstIndex(of: sender)
       else { return }
     
-    didTap(button: sender, at: index)
+    handleDidTap(button: sender, at: index)
   }
 }
 
@@ -92,7 +92,7 @@ private extension BaseButtonGroup {
     buttons.forEach {
       addSubview($0)
       $0.removeTarget(nil, action: nil, for: .allEvents)
-      $0.addTarget(self, action: #selector(didTap(_:)), for: .touchUpInside)
+      $0.addTarget(self, action: #selector(handleDidTap(_:)), for: .touchUpInside)
     }
   }
 }

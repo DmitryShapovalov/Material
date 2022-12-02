@@ -31,11 +31,11 @@ open class RadioButton: BaseIconLayerButton {
   open override func prepare() {
     super.prepare()
     
-    addTarget(self, action: #selector(didTap), for: .touchUpInside)
+    addTarget(self, action: #selector(handleDidTap), for: .touchUpInside)
   }
   
   @objc
-  private func didTap() {
+  private func handleDidTap() {
     setSelected(true, animated: true)
   }
 }
