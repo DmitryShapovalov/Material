@@ -54,7 +54,7 @@ open class RadioButtonGroup: BaseButtonGroup<RadioButton> {
     return buttons.firstIndex(of: b)!
   }
   
-  open override func didTap(button: RadioButton, at index: Int) {
+  open override func handleDidTap(button: RadioButton, at index: Int) {
     let isAnimating = buttons.reduce(false) { $0 || $1.isAnimating }
     guard !isAnimating else { return }
     

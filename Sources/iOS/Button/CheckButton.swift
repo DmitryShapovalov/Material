@@ -40,11 +40,11 @@ open class CheckButton: BaseIconLayerButton {
   
   open override func prepare() {
     super.prepare()
-    addTarget(self, action: #selector(didTap), for: .touchUpInside)
+    addTarget(self, action: #selector(handleDidTap), for: .touchUpInside)
   }
   
   @objc
-  private func didTap() {
+  private func handleDidTap() {
     guard !isAnimating else { return }
     setSelected(!isSelected, animated: true)
   }
